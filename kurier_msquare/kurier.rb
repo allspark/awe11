@@ -14,6 +14,10 @@ class Article
 	def initialize(page)
 		@page = page
 	end
+
+	def hasImage
+		@page.css('labeled-image img').size > 0
+	end
 end
 
 def parseHTML(url)
@@ -22,7 +26,7 @@ end
 
 puts "Hi."
 puts "Wir bauen Ihre Zeitung. Genau jetzt. Genau für Sie."
-puts "Heute unter anderem:"
+puts "Heute unter Anderem:"
 
 headliner = nil
 articles = []
@@ -41,5 +45,7 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 	end
 end
 
-
+articles.each do |article|
+	puts article.hasImage
+end
 
