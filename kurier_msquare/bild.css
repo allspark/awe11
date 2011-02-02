@@ -15,17 +15,8 @@ h2 span {
     display:none;
 }
 
-
-b+span, b+span+span {
-    color:inherit !important;
-    border:inherit !important;
-    display:inline !important;
-    font-size:inherit !important;
-    text-decoration:underline;
-}
-
-blockquote {
-    font-weight:bold;
+li b {
+    display:block;
 }
 
 body {
@@ -45,6 +36,11 @@ li {
     padding:10px;
 }
 
+li.small_article {
+    float: left;
+    max-width: 45%;
+}
+
 ul li span {
     color:inherit;
     font-weight:bold;
@@ -55,7 +51,7 @@ ul lu {
     color:white;
 }
 
-ul li span {
+li span {
     background-color:transparent;
     display:inline;
     font-size:60px;
@@ -63,80 +59,28 @@ ul li span {
     line-height: 90px;
 }
 
-ul li+li, ul li+li+li+li+li+li, ul ~ ul li+li {
-    float:left;
-    background-color:black;
-    color:white;
-    display:block;
-    max-width:30%;
+li.small_article span {
+    font-size: 30px;
+    line-height: 60px;
 }
 
-ul li+li span+span {
-    border-bottom:5px solid #d91918;
-    font-size:30px;
+li.small_article+li.small_article {
+    border: 10px solid #000;
 }
 
-ul li+li+li+li+li+li span+span, ul ~ ul li+li span+span {
-    color:white;
+li.small_article+li.small_article+li.small_article {
+    background: black;
+    border: none;
+    color: white;
 }
 
-ul li+li+li {
+li.big_article {
     background-color:white;
-    border:5px solid black;
+    clear: both;
     color:black;
-    max-width:60%;
+    max-width:90%;
 }
 
-ul li+li+li span+span {
-    color:#d91918;
-    border-bottom:5px solid black;
-    font-size:40px;
+li.headliner {
+    clear: none;
 }
-
-ul li+li+li > span+span:before {
-    background-color:#d91918;
-    color:white;
-    content:"Exklusiv: ";
-}
-
-ul li+li+li+li+li+li+li > span+span:before {
-    background-color:black;
-    color:white;
-    content:"Unfassbar: ";
-}
-
-ul li+li+li+li {
-    background-color:white;
-    border:none;
-    clear:both;
-    color:black;
-    float:left;
-    max-width:30%;
-}
-
-ul li+li+li+li span+span:before,
-ul li+li+li+li+li span+span:before,
-ul li+li+li+li+li+li span+span:before,
-ul li+li+li+li+li+li+li+li span+span:before {
-    content:none;
-}
-
-ul li+li+li+li+li, ul ~ ul li {
-    background-color:white;
-    border:none;
-    color:black;
-    float:right;
-    max-width:30%;
-}
-
-
-ul li+li+li+li+li span+span, ul ~ ul li span+span {
-    font-size:30px;
-    border-width:5px;
-}
-
-
-ul li+li+li+li+li {
-    clear:none;
-}
-

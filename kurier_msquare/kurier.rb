@@ -44,18 +44,20 @@ class Article
 	end
 end
 
-def makeKurier(articles)
-	content = articles.map { |article| makeArticle(article) }.join
+def makeKurier(headliner, articles)
+	content = makeArticle(headliner, true)
+	content += articles.map { |article| makeArticle(article) }.join
 	output = readFile("template.html").gsub("%content%", content)
 	File.open("index.html", 'w') { |f| f.write(output) }
 end
 
-def makeArticle(article)
-	output = "<span>" + article.getTitle + "</span> "
-	output += "<b>" + article.getTeaser + "</b>"
-	output += article.getText.map { |text| "<p>" + text + "</p>" }.join
-	
-	return "<li>" + output + "</li>"
+def makeArticle(article, header = false)
+	output = "<span>" + article.getTitle + "</span>\n "
+	output += "<b>" + article.getTeaser + "</b>\n "
+	output += article.getText.map { |text| "<p>" + text + "</p>\n" }.join
+	css_class = article.size > 1000 ? "big_article" : "small_article"
+	css_class += header ? " headliner" : ""
+	return "<li class=\"" + css_class + "\">" + output + "</li>\n\n"
 end
 
 def readFile(file)
@@ -69,7 +71,8 @@ def readFile(file)
 end
 
 def parseHTML(url)
-        Nokogiri::HTML(open(url, 'r'))
+        doc = Nokogiri::HTML(open(url, 'r'), nil, 'utf-8')
+	return doc
 end
 
 puts "Hi."
@@ -95,7 +98,7 @@ end
 
 articles.sort { |a, b| b.size <=> a.size }
 
-makeKurier(articles)
+makeKurier(headliner, articles)
 
 puts "Schon fertig :-)"
 puts "Ihre Zeitung liegt in der index.html."
