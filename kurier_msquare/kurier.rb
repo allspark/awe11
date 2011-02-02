@@ -15,12 +15,32 @@ class Article
 		@page = page
 	end
 
+	def size
+		(getTeaser + getText.join).size
+	end
+
+	def getTitle
+		@page.css('.top-content h1').first.content
+	end
+
+	def getTeaser
+		@page.css('.top-content .bold').first.content
+	end
+
+	def getText
+		@page.css('#content p').map { |text| text.content }
+	end
+
 	def hasImage
 		@page.css('.labeled-image img').size > 0
 	end
 
-	def getImageHTML
-		@page.css('.labeled-image img').first.content
+	def getImageURL
+		@page.css('.labeled-image img').first.get_attribute('src')
+	end
+
+	def getImageCopyright
+		@page.css('.labeled-image .copyright').first.content
 	end
 end
 
@@ -46,10 +66,20 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 		headliner = article
 	else
 		articles << article
+		break
 	end
 end
 
+articles.sort { |a, b| b.size <=> a.size }
+
 articles.each do |article|
-	puts article.getImageHTML
+	puts article.size
+	puts article.getTitle
+	puts article.getTeaser
+	article.getText.each do |text|
+		puts text
+	end
+	puts article.getImageURL
+	puts artigle.getImageCopyright
 end
 
