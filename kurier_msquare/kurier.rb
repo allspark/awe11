@@ -16,7 +16,11 @@ class Article
 	end
 
 	def hasImage
-		@page.css('labeled-image img').size > 0
+		@page.css('.labeled-image img').size > 0
+	end
+
+	def getImageHTML
+		@page.css('.labeled-image img').first.content
 	end
 end
 
@@ -46,6 +50,6 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 end
 
 articles.each do |article|
-	puts article.hasImage
+	puts article.getImageHTML
 end
 
