@@ -41,7 +41,7 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 	if(headliner == nil)
 		headliner = article
 	else
-		articles = article
+		articles << article
 	end
 end
 
