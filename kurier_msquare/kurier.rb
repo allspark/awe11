@@ -44,6 +44,20 @@ class Article
 	end
 end
 
+def makeKurier(articles)
+	readFile("template.html")	
+end
+
+def readFile(file)
+	output = ""
+	open(file, 'r') do |infile|
+		while(line = infile.gets)
+			output += line + "\n"
+		end
+	end
+	return output
+end
+
 def parseHTML(url)
         Nokogiri::HTML(open(url, 'r'))
 end
@@ -71,6 +85,9 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 end
 
 articles.sort { |a, b| b.size <=> a.size }
+
+makeKurier(articles)
+return
 
 articles.each do |article|
 	puts article.size
