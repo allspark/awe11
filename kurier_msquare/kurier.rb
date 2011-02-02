@@ -45,8 +45,15 @@ class Article
 end
 
 def makeKurier(articles)
-	content = "aha"
-	readFile("template.html").replace(/%content%/, content)
+	content = articles.map { |article| makeArticle(article) }.join
+	output = readFile("template.html").gsub("%content%", content)
+	File.open("index.html", 'w') { |f| f.write(output) }
+end
+
+def makeArticle(article)
+	output = article.getTitle
+	
+	return "<li>" + output + "</li>"
 end
 
 def readFile(file)
@@ -88,16 +95,7 @@ end
 articles.sort { |a, b| b.size <=> a.size }
 
 makeKurier(articles)
-return
 
-articles.each do |article|
-	puts article.size
-	puts article.getTitle
-	puts article.getTeaser
-	article.getText.each do |text|
-		puts text
-	end
-	puts article.getImageURL
-	puts article.getImageCopyright
-end
+puts "Schon fertig :-)"
+puts "Ihre Zeitung liegt in der index.html."
 
