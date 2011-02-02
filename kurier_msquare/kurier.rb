@@ -80,6 +80,6 @@ articles.each do |article|
 		puts text
 	end
 	puts article.getImageURL
-	puts artigle.getImageCopyright
+	puts article.getImageCopyright
 end
 
