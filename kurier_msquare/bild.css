@@ -1,0 +1,153 @@
+* {
+    text-decoration:none;
+    font-family:sans-serif;
+}
+
+h2 {
+    background:url("bild_logo.png");
+    float:left;
+    height:300px;
+    margin:25px 25px 25px 0px;
+    width:300px;
+}
+
+h2 span {
+    display:none;
+}
+
+body > b:before {
+    content:"Leserreporter: ";
+}
+
+body > div, body > h3, body > p {
+    display:none;
+}
+
+a [href]^="http://blog.fefe.de" {
+    display:none;
+}
+
+b+a, b+a+a {
+    color:inherit !important;
+    border:inherit !important;
+    display:inline !important;
+    font-size:inherit !important;
+    text-decoration:underline;
+}
+
+blockquote {
+    font-weight:bold;
+}
+
+body {
+    background-color:white;
+    padding:0px 25px;
+}
+
+ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    vertical-align:top;
+}
+
+li {
+    margin:0px 10px 10px 0px;
+    padding:10px;
+}
+
+ul li a {
+    color:inherit;
+    display:none;
+    font-weight:bold;
+}
+
+ul lu {
+    background-color:black;
+    color:white;
+}
+
+ul li a+a {
+    background-color:transparent;
+    display:inline;
+    font-size:60px;
+    border-bottom:10px solid #d91918;
+}
+
+ul li+li, ul li+li+li+li+li+li, ul ~ ul li+li {
+    float:left;
+    background-color:black;
+    color:white;
+    display:block;
+    max-width:30%;
+}
+
+ul li+li a+a {
+    border-bottom:5px solid #d91918;
+    font-size:30px;
+}
+
+ul li+li+li+li+li+li a+a, ul ~ ul li+li a+a {
+    color:white;
+}
+
+ul li+li+li {
+    background-color:white;
+    border:5px solid black;
+    color:black;
+    max-width:60%;
+}
+
+ul li+li+li a+a {
+    color:#d91918;
+    border-bottom:5px solid black;
+    font-size:40px;
+}
+
+ul li+li+li > a+a:before {
+    background-color:#d91918;
+    color:white;
+    content:"Exklusiv: ";
+}
+
+ul li+li+li+li+li+li+li > a+a:before {
+    background-color:black;
+    color:white;
+    content:"Unfassbar: ";
+}
+
+ul li+li+li+li {
+    background-color:white;
+    border:none;
+    clear:both;
+    color:black;
+    float:left;
+    max-width:30%;
+}
+
+ul li+li+li+li a+a:before,
+ul li+li+li+li+li a+a:before,
+ul li+li+li+li+li+li a+a:before,
+ul li+li+li+li+li+li+li+li a+a:before {
+    content:none;
+}
+
+ul li+li+li+li+li, ul ~ ul li {
+    background-color:white;
+    border:none;
+    color:black;
+    float:right;
+    max-width:30%;
+}
+
+
+ul li+li+li+li+li a+a, ul ~ ul li a+a {
+    font-size:30px;
+    border-width:5px;
+}
+
+
+ul li+li+li+li+li {
+    clear:none;
+}
+

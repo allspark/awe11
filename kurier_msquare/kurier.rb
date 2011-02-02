@@ -45,7 +45,8 @@ class Article
 end
 
 def makeKurier(articles)
-	readFile("template.html")	
+	content = "aha"
+	readFile("template.html").replace(/%content%/, content)
 end
 
 def readFile(file)
