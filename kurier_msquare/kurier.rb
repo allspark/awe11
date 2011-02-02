@@ -1,16 +1,45 @@
 require 'rubygems'
-require 'mechanize'
-require 'logger'
+require 'open-uri'
+require 'nokogiri'
 
-agent = Mechanize.new { |a| a.log = Logger.new("mech.log") }
+twitter_url = 'http://twitter.com/weser_kurier'
 
-articles = []
+class Article
+	def self.getByUrl(url)
+		Article.new(parseHTML(url))
+	end
 
-twitter_page = agent.get("http://twitter.com/weser_kurier")
-twitter_page.links.each do |link|
-	if(link.text.match(/tinyurl/))
-		articles << link.click
+	attr_accessor :page
+
+	def initialize(page)
+		@page = page
 	end
 end
 
-articles.each{ |article| puts article.title}
+def parseHTML(url)
+        Nokogiri::HTML(open(url, 'r'))
+end
+
+puts "Hi."
+puts "Wir bauen Ihre Zeitung. Genau jetzt. Genau für Sie."
+puts "Heute unter anderem:"
+
+headliner = nil
+articles = []
+
+parseHTML(twitter_url).css('.entry-content').each do |link|
+	title = link.xpath('text()').first.content.strip
+	if(title.match(/(\.|!|\?)$/))
+		puts " - " + title
+	end
+
+	article = Article.getByUrl(link.css('a').last.content)
+	if(headliner == nil)
+		headliner = article
+	else
+		articles = article
+	end
+end
+
+
+
