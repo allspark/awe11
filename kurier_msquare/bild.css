@@ -64,11 +64,11 @@ li.small_article span {
     line-height: 60px;
 }
 
-li.small_article+li.small_article {
+li.small_article:nth-of-type(2n) {
     border: 10px solid #000;
 }
 
-li.small_article+li.small_article+li.small_article {
+li.small_article:nth-of-type(3n) {
     background: black;
     border: none;
     color: white;
@@ -94,7 +94,16 @@ li.big_article img {
     float: right;
 }
 
+li.small_article img {
+    margin: auto;
+}
+
 li.headliner img {
     float: none;
     width: 70%;
+}
+
+li.big_article:nth-of-type(2n) {
+    background: black;
+    color: white;
 }

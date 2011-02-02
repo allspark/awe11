@@ -59,8 +59,8 @@ def makeArticle(article, header = false)
 	output += "<span>" + article.getTitle + "</span>\n "
 	output += "<b>" + article.getTeaser + "</b>\n "
 	output += article.getText.map { |text| "<p>" + text + "</p>\n" }.join
-	css_class = article.size > 1000 ? "big_article" : "small_article"
-	css_class += header ? " headliner" : ""
+	css_class = article.size > 2000 ? "big_article" : "small_article"
+	css_class = header ? "headliner" : css_class
 	return "<li class=\"" + css_class + "\">" + output + "</li>\n\n"
 end
 
@@ -102,7 +102,7 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 	end
 end
 
-articles.sort { |a, b| b.size <=> a.size }
+articles = articles.sort { |a, b| b.size <=> a.size }
 
 makeKurier(headliner, articles)
 
