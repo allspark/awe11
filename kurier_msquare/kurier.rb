@@ -24,7 +24,7 @@ class Article
 	end
 
 	def getTeaser
-		@page.css('.top-content .bold').first.content
+		@page.css('.top-content .bold').first != nil ? @page.css('.top-content .bold').first.content : ""
 	end
 
 	def getText
@@ -90,7 +90,6 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 		headliner = article
 	else
 		articles << article
-		break
 	end
 end
 

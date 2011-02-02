@@ -15,19 +15,8 @@ h2 span {
     display:none;
 }
 
-body > b:before {
-    content:"Leserreporter: ";
-}
 
-body > div, body > h3, body > p {
-    display:none;
-}
-
-a [href]^="http://blog.fefe.de" {
-    display:none;
-}
-
-b+a, b+a+a {
+b+span, b+span+span {
     color:inherit !important;
     border:inherit !important;
     display:inline !important;
@@ -56,9 +45,8 @@ li {
     padding:10px;
 }
 
-ul li a {
+ul li span {
     color:inherit;
-    display:none;
     font-weight:bold;
 }
 
@@ -67,11 +55,12 @@ ul lu {
     color:white;
 }
 
-ul li a+a {
+ul li span {
     background-color:transparent;
     display:inline;
     font-size:60px;
     border-bottom:10px solid #d91918;
+    line-height: 90px;
 }
 
 ul li+li, ul li+li+li+li+li+li, ul ~ ul li+li {
@@ -82,12 +71,12 @@ ul li+li, ul li+li+li+li+li+li, ul ~ ul li+li {
     max-width:30%;
 }
 
-ul li+li a+a {
+ul li+li span+span {
     border-bottom:5px solid #d91918;
     font-size:30px;
 }
 
-ul li+li+li+li+li+li a+a, ul ~ ul li+li a+a {
+ul li+li+li+li+li+li span+span, ul ~ ul li+li span+span {
     color:white;
 }
 
@@ -98,19 +87,19 @@ ul li+li+li {
     max-width:60%;
 }
 
-ul li+li+li a+a {
+ul li+li+li span+span {
     color:#d91918;
     border-bottom:5px solid black;
     font-size:40px;
 }
 
-ul li+li+li > a+a:before {
+ul li+li+li > span+span:before {
     background-color:#d91918;
     color:white;
     content:"Exklusiv: ";
 }
 
-ul li+li+li+li+li+li+li > a+a:before {
+ul li+li+li+li+li+li+li > span+span:before {
     background-color:black;
     color:white;
     content:"Unfassbar: ";
@@ -125,10 +114,10 @@ ul li+li+li+li {
     max-width:30%;
 }
 
-ul li+li+li+li a+a:before,
-ul li+li+li+li+li a+a:before,
-ul li+li+li+li+li+li a+a:before,
-ul li+li+li+li+li+li+li+li a+a:before {
+ul li+li+li+li span+span:before,
+ul li+li+li+li+li span+span:before,
+ul li+li+li+li+li+li span+span:before,
+ul li+li+li+li+li+li+li+li span+span:before {
     content:none;
 }
 
@@ -141,7 +130,7 @@ ul li+li+li+li+li, ul ~ ul li {
 }
 
 
-ul li+li+li+li+li a+a, ul ~ ul li a+a {
+ul li+li+li+li+li span+span, ul ~ ul li span+span {
     font-size:30px;
     border-width:5px;
 }
