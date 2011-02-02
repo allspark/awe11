@@ -84,3 +84,17 @@ li.big_article {
 li.headliner {
     clear: none;
 }
+
+li img {
+    display: block;
+    padding: 15px 0 15px 15px;
+}
+
+li.big_article img {
+    float: right;
+}
+
+li.headliner img {
+    float: none;
+    width: 70%;
+}

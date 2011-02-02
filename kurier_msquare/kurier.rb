@@ -52,7 +52,11 @@ def makeKurier(headliner, articles)
 end
 
 def makeArticle(article, header = false)
-	output = "<span>" + article.getTitle + "</span>\n "
+	output = ""
+	if(article.hasImage)
+		output += "<img src=\"" + article.getImageURL + "\" alt=\"\" title=\"" + article.getImageCopyright + "\" />"
+	end
+	output += "<span>" + article.getTitle + "</span>\n "
 	output += "<b>" + article.getTeaser + "</b>\n "
 	output += article.getText.map { |text| "<p>" + text + "</p>\n" }.join
 	css_class = article.size > 1000 ? "big_article" : "small_article"
