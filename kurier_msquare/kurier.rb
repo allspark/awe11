@@ -51,7 +51,9 @@ def makeKurier(articles)
 end
 
 def makeArticle(article)
-	output = article.getTitle
+	output = "<span>" + article.getTitle + "</span> "
+	output += "<b>" + article.getTeaser + "</b>"
+	output += article.getText.map { |text| "<p>" + text + "</p>" }.join
 	
 	return "<li>" + output + "</li>"
 end
