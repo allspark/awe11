@@ -92,7 +92,7 @@ parseHTML(twitter_url).css('.entry-content').each do |link|
 		puts " - " + title
 	end
 
-	if(link.css('a').last != nil)
+	if(!link.css('a').last.nil?)
 		article = Article.getByUrl(link.css('a').last.content)
 		if(!(article.getTitle+article.getTeaser+article.getText.join).match(/Werder/))
 			if(headliner == nil)
