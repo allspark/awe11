@@ -9,4 +9,4 @@ begin
   toGuess = actWort.call(word, inputCharactes)
   guessCount = getTries.call(word, inputCharactes)
   print(toGuess,"  (", guessCount, " bad tries)\n", ((guessing=(toGuess != word)) ? "" : "geschafft\n"))  
-end while (guessCount < max_bad_guesses && guessing && (inputCharactes=(inputCharactes+((t=((gets) or break).strip[0]) != nil ? t.split(//) : []))))
+end while (guessCount < max_bad_guesses && guessing && (inputCharactes+=((t=(gets or break).strip[0]) != nil ? t.split(//) : [])))
