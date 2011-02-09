@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 inputCharactes = []
 word = proc {|s| s[rand(s.size)] }.call(["letmein", "hello world"])
 getTries = proc { |word,chars| chars.size - word.split(//).uniq.join.count(chars.join) }
@@ -8,5 +8,5 @@ max_bad_guesses = 10
 begin
   toGuess = actWort.call(word, inputCharactes)
   guessCount = getTries.call(word, inputCharactes)
-  print(toGuess,"  (", guessCount, " bad tries)\n", ((guessing=(toGuess != word)) ? "" : "geschafft\n"))  
+  print(toGuess,"  (", guessCount, " bad tries)\n", ((guessing=(toGuess != word)) ? "" : "geschafft\n"))
 end while (guessCount < max_bad_guesses && guessing && (inputCharactes+=((t=(gets or break).strip[0]) != nil ? t.split(//) : [])))
