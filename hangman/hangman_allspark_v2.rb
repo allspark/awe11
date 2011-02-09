@@ -4,7 +4,7 @@ word = proc {|s| s[rand(s.size)] }.call(["letmein", "hello world"])
 getTries = proc { |word,chars| chars.size - word.split(//).uniq.join.count(chars.join) }
 actWort = proc { |word,chars| word.gsub(/[^#{chars.join.empty? ? "." : chars.join}\s]/, '_') }
 guessing = true
-max_bad_guesses=10
+max_bad_guesses = 10
 begin
   toGuess = actWort.call(word, inputCharactes)
   guessCount = getTries.call(word, inputCharactes)
