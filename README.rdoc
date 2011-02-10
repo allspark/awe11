@@ -1,4 +1,4 @@
-= awe11 Git Repository = 
+= awe11 Git Repository 
 
 Hier liegen zuweilen die Übungsaufgaben für awe11.
 
