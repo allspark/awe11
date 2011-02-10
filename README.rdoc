@@ -1,0 +1,9 @@
+= awe11 Git Repository = 
+
+Hier liegen zuweilen die Übungsaufgaben für awe11.
+
+Unter anderem:
+* book: Durcharbeitung der Rails-Einführung in 12 Kapiteln
+* hangman: Implementation eines handman-Spiels mit möglichst wenig Zeilen und Zeichen
+* kurier_msquare: Macht aus dem Weser Kurier Twitter Feed eine schicke html-Zeitung.
+
