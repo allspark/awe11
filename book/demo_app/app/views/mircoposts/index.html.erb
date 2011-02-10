@@ -1,0 +1,25 @@
+<h1>Listing mircoposts</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mircoposts.each do |mircopost| %>
+  <tr>
+    <td><%= mircopost.content %></td>
+    <td><%= mircopost.user_id %></td>
+    <td><%= link_to 'Show', mircopost %></td>
+    <td><%= link_to 'Edit', edit_mircopost_path(mircopost) %></td>
+    <td><%= link_to 'Destroy', mircopost, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mircopost', new_mircopost_path %>

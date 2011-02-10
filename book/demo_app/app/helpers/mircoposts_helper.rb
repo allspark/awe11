@@ -1,0 +1,2 @@
+module MircopostsHelper
+end
