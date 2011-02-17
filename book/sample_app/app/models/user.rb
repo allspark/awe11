@@ -1,17 +1,19 @@
 # == Schema Information
-# Schema version: 20110215101711
+# Schema version: 20110216231951
 #
 # Table name: users
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  email              :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(255)
+#  salt               :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attr_accessor :password, :encrypted_password
   attr_accessible :name, :email, :password, :password_confirmation
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -31,7 +33,7 @@ class User < ActiveRecord::Base
   
   # Return true if the user's password matches the submitted password.
   def has_password?(submitted_password)
-    encrypted_password == encrypt(submitted_password)
+    @encrypted_password == encrypt(submitted_password)
   end
   
   def self.authenticate(email, submitted_password)
@@ -43,12 +45,12 @@ class User < ActiveRecord::Base
   private
   
     def encrypt_password
-      self.salt = make_salt if new_record?
-      self.encrypted_password = encrypt(password)
+      @salt = make_salt if new_record?
+      @encrypted_password = encrypt(password)
     end
     
     def encrypt(string)
-      secure_hash("#{salt}--#{string}")
+      secure_hash("#{@salt}--#{string}")
     end
     
     def make_salt
